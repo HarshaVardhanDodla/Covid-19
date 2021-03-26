@@ -3,6 +3,8 @@ import { FormControl, Select, MenuItem, Card, CardContent } from "@material-ui/c
 import "./App.css";
 import InfoBox from './InfoBox';
 import Map from './Map';
+import LineGraph from './LineGraph';
+import { sortData } from './util';
 import Table from './Table';
 
 function App() {
@@ -30,7 +32,8 @@ function App() {
             value: country.countryInfo.iso2,
           }));
 
-          setTableData(data);
+          const sortedData = sortData(data);
+          setTableData(sortedData);
           setCountries(countries);
         });
     };
@@ -80,10 +83,14 @@ function App() {
     </div>
     <Card className="app__right">
       <CardContent>
+      <div className="app__information">
         <h3>
           Live Cases by Country
         </h3>
         <Table countries={tableData}></Table>
+        <h3> Worldwide New Cases</h3>
+        <LineGraph />
+      </div>
       </CardContent>
     </Card>
     </div>
