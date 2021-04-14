@@ -36,14 +36,14 @@ export const prettyPrintStat = (stat) =>
 export const showDataOnMap = (data, casesType='cases') => (
     data.map(country =>(
         <Circle
-            // center={[country.countryInfo.lat, country.countryInfo.long]}
+            center={[country.countryInfo.lat, country.countryInfo.long]}
             fillOpacity={0.4}
             pathOptions={{  
               color: casesTypeColors[casesType].hex,
               fillColor: casesTypeColors[casesType].hex}}
-            // radius={
-            //   Math.sqrt(country[casesType] / 10) * casesTypeColors[casesType].multiplier
-            // }
+            radius={
+              Math.sqrt(country[casesType] / 10) * casesTypeColors[casesType].multiplier
+            }
         >
           <Popup>
             <div className="info-container">
